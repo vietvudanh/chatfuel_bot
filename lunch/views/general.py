@@ -26,7 +26,7 @@ def index():
         up_to += place['priority']
 
     return jsonify({
-        'message': [
+        'messages': [
             {'text': "Địa điểm: " + choice['name']},
             {'text': "Khoảng cách: " + str(choice['priority'])},
         ]
