@@ -27,7 +27,7 @@ def index():
 
     return jsonify({
         'message': {
-            'text': "Địa điểm: " + choice['priority'],
-            'text': "Khoảng cách: " + choice['priority'],
+            'text': "Địa điểm: " + choice['name'],
+            'text': "Khoảng cách: " + str(choice['priority']),
         }
     })
