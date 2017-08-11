@@ -5,6 +5,9 @@ import random
 from flask import current_app, Blueprint, jsonify
 general = Blueprint('general', __name__)
 
+def repr(place):
+    return "Địa điểm: " + str(place['name'].encode('utf-8')) + "\n" + "Khoảng cách: " + str(place['distance']) + "\n" + "Ưu tiên: " + str(place['priority'])
+
 
 @general.route('/choice')
 def choice():
@@ -27,11 +30,10 @@ def choice():
 
     return jsonify({
         'messages': [{
-            'text': "Địa điểm: " + choice['name'] + "\n"
-                    + "Khoảng cách: " + choice['name'] + "\n"
-                    + "Ưu tiên: " + choice['priority'] + "\n"
+            'text': repr(choice)
         }]
     })
+
 
 @general.route('/')
 def index():
@@ -41,10 +43,8 @@ def index():
     places = data['places']
 
     return jsonify({
-        'messages': [{'text': "Tất cả các địa điểm"}] 
-        + [{
-            'text': "Địa điểm: " + place['name'] + "\n"
-                    + "Khoảng cách: " + place['name'] + "\n"
-                    + "Ưu tiên: " + place['priority'] + "\n"
-        } for place in places]
+        'messages':
+            [{'text': "Tất cả các địa điểm"}]
+            +
+            [{'text': repr(place)} for place in places]
     })
