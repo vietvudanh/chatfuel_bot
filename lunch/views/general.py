@@ -2,7 +2,7 @@
 import json
 import random
 
-from flask import current_app, Blueprint, render_template, jsonify
+from flask import current_app, Blueprint, jsonify
 general = Blueprint('general', __name__)
 
 
@@ -26,8 +26,8 @@ def index():
         up_to += place['priority']
 
     return jsonify({
-        'message': {
-            'text': "Địa điểm: " + choice['name'],
-            'text': "Khoảng cách: " + str(choice['priority']),
-        }
+        'message': [
+            {'text': "Địa điểm: " + choice['name']},
+            {'text': "Khoảng cách: " + str(choice['priority'])},
+        ]
     })
