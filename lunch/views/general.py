@@ -6,7 +6,7 @@ from flask import current_app, Blueprint, jsonify
 general = Blueprint('general', __name__)
 
 def repr(place):
-    return "Địa điểm: " + str(place['name'].encode('utf-8')) + "\n" + "Khoảng cách: " + str(place['distance']) + "\n" + "Ưu tiên: " + str(place['priority'])
+    return "Địa điểm: " + str(place['name']) + "\n" + "Khoảng cách: " + str(place['distance']) + "\n" + "Ưu tiên: " + str(place['priority'])
 
 
 @general.route('/choice')
